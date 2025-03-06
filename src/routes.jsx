@@ -9,6 +9,13 @@ import { Layout } from "./pages/Layout";
 import { Home } from "./pages/Home";
 import { Single } from "./pages/Single";
 import { Demo } from "./pages/Demo";
+import { Favourites } from "./pages/starwars/Favourites";
+import { Films } from "./pages/starwars/Films";
+import { People } from "./pages/starwars/People";
+import { Planets } from "./pages/starwars/Planets";
+import { Species } from "./pages/starwars/Species";
+import { Starships } from "./pages/starwars/Starships";
+import { Vehicles } from "./pages/starwars/Vehicles";
 
 export const router = createBrowserRouter(
     createRoutesFromElements(
@@ -25,6 +32,15 @@ export const router = createBrowserRouter(
         <Route path= "/" element={<Home />} />
         <Route path="/single/:theId" element={ <Single />} />  {/* Dynamic route for single items */}
         <Route path="/demo" element={<Demo />} />
+        {/* Routes de Star Wars */}
+        <Route path="/favourites" element={<Favourites />} />
+        <Route path="/films" element={<Films />} />
+        <Route path="/people" element={<People />} />
+        <Route path="/planets" element={<Planets />} />
+        <Route path="/species" element={<Species />} />
+        <Route path="/starships" element={<Starships />} />
+        <Route path="/vehicles" element={<Vehicles />} />
+
       </Route>
     )
 );
