@@ -1,21 +1,28 @@
 export const initialStore=()=>{
-  return{
-    
-    
-
+  return {
+    favourites: []
   }
+  
 }
 
 export default function storeReducer(store, action = {}) {
   switch(action.type){
-    case 'add_task':
-
-      const { id,  color } = action.payload
+    case 'add_favourite':
 
       return {
         ...store,
-        todos: store.todos.map((todo) => (todo.id === id ? { ...todo, background: color } : todo))
+        favourites: [...store.favourites, action.payload],
+      }
+
+    case 'remove_favourite':
+
+      return {
+        ...store,
+        favourites: store.favourites.filter(
+          (item) => item.uid !== action.payload.uid
+        )
       };
+      
     default:
       throw Error('Unknown action.');
   }    

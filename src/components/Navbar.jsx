@@ -1,7 +1,14 @@
 import { Link } from "react-router-dom";
+import useGlobalReducer from "../hooks/useGlobalReducer";
 import starwarsLogo from "../assets/img/star-wars-impactmkt-medium-size.jpg"
 
 export const Navbar = () => {
+
+	const { store, dispatch } = useGlobalReducer();
+
+	const handleRemove = (item) => {
+		dispatch({ type: "remove_favourite", payload: item })
+	}
 
 	return (
 		<nav className="navbar navbar-dark bg-dark">
@@ -31,11 +38,6 @@ export const Navbar = () => {
 								</Link>
 							</li>
 							<li className="nav-item">
-								<Link to="/films" className="nav-link">
-									Películas
-								</Link>
-							</li>
-							<li className="nav-item">
 								<Link to="/people" className="nav-link">
 									Protagonistas
 								</Link>
@@ -59,6 +61,34 @@ export const Navbar = () => {
 								<Link to="/vehicles" className="nav-link">
 									Vehículos
 								</Link>
+							</li>
+							<li className="nav-item">
+								{/* Lista de favoritos */ }
+								<div className="dropdown">
+									<button
+									className="btn btn-primary dropdown-toggle"
+									type="button"
+									data-bs-toggle="dropdown">
+										Favoritos: {store.favourites.length}
+									</button>
+									<ul className="dropdown-menu dropdown-menu-end">
+          								{store.favourites.length === 0 ? (
+            								<li className="dropdown-item text-muted">No hay favoritos</li>
+          								) : (
+            								store.favourites.map((item) => (
+              									<li key={item.uid} className="dropdown-item d-flex justify-content-between align-items-center">
+                								{item.name}
+                								<button
+                  									className="btn btn-sm"
+                  									onClick={() => handleRemove(item)}
+                									>
+                  									<i className="bi bi-trash"></i>
+                								</button>
+              									</li>
+            								))
+          								)}
+        							</ul>
+								</div>
 							</li>
 						</ul>
 					</div>
