@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from "react-router-dom";
 import { useFetch } from '../../hooks/useFetch';
+import "https://kit.fontawesome.com/072e5df971.js"
 
 export const Planets = () => {
 

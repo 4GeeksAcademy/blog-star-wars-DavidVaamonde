@@ -19,7 +19,7 @@ export default function storeReducer(store, action = {}) {
       return {
         ...store,
         favourites: store.favourites.filter(
-          (item) => item.uid !== action.payload.uid
+          (item) => item.id !== action.payload.id
         )
       };
       

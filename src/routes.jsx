@@ -12,9 +12,12 @@ import { Demo } from "./pages/Demo";
 import { Favourites } from "./pages/starwars/Favourites";
 import { People } from "./pages/starwars/People";
 import { Planets } from "./pages/starwars/Planets";
-import { Species } from "./pages/starwars/Species";
 import { Starships } from "./pages/starwars/Starships";
 import { Vehicles } from "./pages/starwars/Vehicles";
+import { PlanetDetail } from "./pages/details/PlanetDetail";
+import { PeopleDetail } from "./pages/details/PeopleDetail";
+import { StarshipDetail } from "./pages/details/StarshipDetail";
+import { VehicleDetail } from "./pages/details/VehicleDetail";
 
 export const router = createBrowserRouter(
     createRoutesFromElements(
@@ -34,10 +37,13 @@ export const router = createBrowserRouter(
         {/* Routes de Star Wars */}
         <Route path="/favourites" element={<Favourites />} />
         <Route path="/people" element={<People />} />
+        <Route path="/people/:id" element={<PeopleDetail />} />
         <Route path="/planets" element={<Planets />} />
-        <Route path="/species" element={<Species />} />
+        <Route path="/planets/:id" element={<PlanetDetail />} />
         <Route path="/starships" element={<Starships />} />
+        <Route path="/starships/:id" element={<StarshipDetail />} />
         <Route path="/vehicles" element={<Vehicles />} />
+        <Route path="/vehicles/:id" element={<VehicleDetail />} />
 
       </Route>
     )

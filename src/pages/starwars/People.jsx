@@ -2,6 +2,7 @@ import React from 'react'
 import { Link, useNavigate } from "react-router-dom";
 import { useFetch } from '../../hooks/useFetch';
 import useGlobalReducer from '../../hooks/useGlobalReducer';
+import "https://kit.fontawesome.com/072e5df971.js"
 
 export const People = () => {
 
@@ -30,14 +31,7 @@ export const People = () => {
             // {message: '', results: []}
             return data.results;
         }
-        //Definimos función que muestre un planeta específico
-        const getPeopleById = async (id) => {
-            // https://www.swapi.tech/api/people/1
-            const response = await fetch(`${BASE_URL}/people/${id}`);
-            if (!response.ok) throw new Error("Error fetching People");
-            const data = await response.json();
-            return data.result;
-        }
+        
     
         const { data: people, loading: loadingPeople } = useFetch(getPeople, null);
 
@@ -50,7 +44,7 @@ export const People = () => {
                     <p>Cargando personajes ....</p>
                 ) : (
                     people.map((person, index) => (
-                        <div className="col-md-4 mb-4" key={index}>
+                        <div className="col col-3 mb-4 mx-3" key={index}>
                             <div className='card'>
                                 <img
                                     src="https://placehold.co/400x200"
@@ -61,11 +55,14 @@ export const People = () => {
                                     <h5 className='card-text'>{person.name}</h5>
                                 </div>
                                 <div className='d-flex justify-content-center'>
+                                    <Link to={`/people/${ index+1 }`} className="btn btn-primary">
+                                        Learn More
+                                    </Link>
                                     <button
                                         className={`favorite-btn ${isFavourite ? "active" : ""}`}
                                         onClick={handleFavorite}
                                     >
-                                        <i className="bi bi-heart-fill"></i>
+                                        <i class="fa-solid fa-heart"></i>
                                     </button>
                                 </div>
                             </div>

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import useGlobalReducer from "../hooks/useGlobalReducer";
 import starwarsLogo from "../assets/img/star-wars-impactmkt-medium-size.jpg"
+import "https://kit.fontawesome.com/072e5df971.js"
 
 export const Navbar = () => {
 
@@ -17,6 +18,32 @@ export const Navbar = () => {
 				<Link to="/">
 					<img id="logoStar" src={starwarsLogo} />
 				</Link>
+
+				{/* Lista de favoritos */ }
+				<div className="dropdown">
+					<button
+						className="btn btn-primary dropdown-toggle"
+						type="button"
+						data-bs-toggle="dropdown">
+						Favoritos: {store.favourites.length}
+					</button>
+					<ul className="dropdown-menu dropdown-menu-end">
+          				{store.favourites.length === 0 ? (
+            				<li className="dropdown-item text-muted">No hay favoritos</li>
+          				) : (
+            				store.favourites.map((item) => (
+              					<li key={item.uid} className="dropdown-item d-flex justify-content-between align-items-center">
+                					{item.name}
+                						<button
+                  							className="btn btn-sm"
+                  							onClick={() => handleRemove(item)}>
+                  							<i class="fa-solid fa-trash"></i>
+                						</button>
+              					</li>
+            				))
+          				)}
+        			</ul>
+				</div>
 				
 				{/* Botón para el Offcanvas */}
 				<button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
@@ -48,11 +75,6 @@ export const Navbar = () => {
 								</Link>
 							</li>
 							<li className="nav-item">
-								<Link to="/species" className="nav-link">
-									Especies
-								</Link>
-							</li>
-							<li className="nav-item">
 								<Link to="/starships" className="nav-link">
 									Naves estelares
 								</Link>
@@ -62,34 +84,7 @@ export const Navbar = () => {
 									Vehículos
 								</Link>
 							</li>
-							<li className="nav-item">
-								{/* Lista de favoritos */ }
-								<div className="dropdown">
-									<button
-									className="btn btn-primary dropdown-toggle"
-									type="button"
-									data-bs-toggle="dropdown">
-										Favoritos: {store.favourites.length}
-									</button>
-									<ul className="dropdown-menu dropdown-menu-end">
-          								{store.favourites.length === 0 ? (
-            								<li className="dropdown-item text-muted">No hay favoritos</li>
-          								) : (
-            								store.favourites.map((item) => (
-              									<li key={item.uid} className="dropdown-item d-flex justify-content-between align-items-center">
-                								{item.name}
-                								<button
-                  									className="btn btn-sm"
-                  									onClick={() => handleRemove(item)}
-                									>
-                  									<i className="bi bi-trash"></i>
-                								</button>
-              									</li>
-            								))
-          								)}
-        							</ul>
-								</div>
-							</li>
+							
 						</ul>
 					</div>
 				</div>
