@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useGlobalReducer from "../hooks/useGlobalReducer";
 import starwarsLogo from "../assets/img/star-wars-impactmkt-medium-size.jpg"
 import "https://kit.fontawesome.com/072e5df971.js"
@@ -6,6 +6,7 @@ import "https://kit.fontawesome.com/072e5df971.js"
 export const Navbar = () => {
 
 	const { store, dispatch } = useGlobalReducer();
+	const navigate = useNavigate();
 
 	const handleRemove = (item) => {
 		dispatch({ type: "remove_favourite", payload: item })
@@ -32,7 +33,7 @@ export const Navbar = () => {
             				<li className="dropdown-item text-muted">No hay favoritos</li>
           				) : (
             				store.favourites.map((item) => (
-              					<li key={item.uid} className="dropdown-item d-flex justify-content-between align-items-center">
+              					<li key={item.uid} className="dropdown-item d-flex justify-content-between align-items-center" onClick={() => navigate(`/${item.type}/${item.uid}`)}>
                 					{item.name}
                 						<button
                   							className="btn btn-sm"
@@ -44,7 +45,7 @@ export const Navbar = () => {
           				)}
         			</ul>
 				</div>
-				
+
 				{/* Botón para el Offcanvas */}
 				<button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
       				<span class="navbar-toggler-icon"></span>
@@ -84,11 +85,11 @@ export const Navbar = () => {
 									Vehículos
 								</Link>
 							</li>
-							
+
 						</ul>
 					</div>
 				</div>
-				
+
 			</div>
 		</nav>
 	);

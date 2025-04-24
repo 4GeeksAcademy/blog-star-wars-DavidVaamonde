@@ -2,7 +2,7 @@ export const initialStore=()=>{
   return {
     favourites: []
   }
-  
+
 }
 
 export default function storeReducer(store, action = {}) {
@@ -19,11 +19,11 @@ export default function storeReducer(store, action = {}) {
       return {
         ...store,
         favourites: store.favourites.filter(
-          (item) => item.id !== action.payload.id
+          (item) => item.uid !== action.payload
         )
       };
-      
+
     default:
       throw Error('Unknown action.');
-  }    
+  }
 }
