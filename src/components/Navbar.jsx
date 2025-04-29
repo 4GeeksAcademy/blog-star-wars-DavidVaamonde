@@ -36,7 +36,7 @@ export const Navbar = () => {
               					<li key={item.uid} className="dropdown-item d-flex justify-content-between align-items-center" onClick={() => navigate(`/${item.type}/${item.uid}`)}>
                 					{item.name}
                 						<button
-                  							className="btn btn-sm"
+                  							className="btn btn-md m-2"
                   							onClick={() => handleRemove(item)}>
                   							<i class="fa-solid fa-trash"></i>
                 						</button>

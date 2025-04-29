@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useFetch } from "../../hooks/useFetch";
+import { Link } from "react-router-dom";
 
 export const PeopleDetail = () => {
 
@@ -21,7 +22,7 @@ export const PeopleDetail = () => {
 
 
     if (loading) return <p>Loading ....</p>;
-    if (error) return <p>Error loading planet.</p>;
+    if (error) return <p>Error loading person.</p>;
 
     const {
         name,
@@ -61,14 +62,25 @@ export const PeopleDetail = () => {
 
 
             <div className="row text-center fw-bold">
-                <div className="col">Nombre: <br /><span className="text-dark fw-normal">{name}</span></div>
-                <div className="col">Genero: <br /><span className="text-dark fw-normal">{gender}</span></div>
-                <div className="col">Año de nacimiento: <br /><span className="text-dark fw-normal">{birth_year}</span></div>
-                <div className="col">Altura: <br /><span className="text-dark fw-normal">{height}</span></div>
-                <div className="col">Color de ojos: <br /><span className="text-dark fw-normal">{eye_color}</span></div>
-                <div className="col">Color de pelo: <br /><span className="text-dark fw-normal">{hair_color}</span></div>
-                <div className="col">Color de piel: <br /><span className="text-dark fw-normal">{skin_color}</span></div>
+                <div className="col-md-3 mb-3">Nombre: <br /><span className="text-dark fw-normal">{name}</span></div>
+                <div className="col-md-3 mb-3">Genero: <br /><span className="text-dark fw-normal">{gender}</span></div>
+                <div className="col-md-3 mb-3">Año de nacimiento: <br /><span className="text-dark fw-normal">{birth_year}</span></div>
+                <div className="col-md-3 mb-3">Altura: <br /><span className="text-dark fw-normal">{height}</span></div>
+                <div className="col-md-3 mb-3">Color de ojos: <br /><span className="text-dark fw-normal">{eye_color}</span></div>
+                <div className="col-md-3 mb-3">Color de pelo: <br /><span className="text-dark fw-normal">{hair_color}</span></div>
+                <div className="col-md-3 mb-3">Color de piel: <br /><span className="text-dark fw-normal">{skin_color}</span></div>
+                
             </div>
+
+            <div className="d-flex justify-content-center">
+                <Link to="/people">
+                    <button className="btn btn-primary m-3">
+                        Volver
+                    </button>
+                </Link>
+            </div>
+            
+
         </div>
     )
 }

@@ -72,8 +72,9 @@ export const People = () => {
                 <div className="card-body">
                   <h5 className="card-text">{person.name}</h5>
                 </div>
-                <div className="d-flex justify-content-center">
-                  <Link to={`/people/${person.uid}`} className="btn btn-primary">
+                <hr />
+                <div className="d-flex justify-content-around">
+                  <Link to={`/people/${person.uid}`} className="btn btn-primary mb-2">
                     Learn More
                   </Link>
                   <button
